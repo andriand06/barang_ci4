@@ -1,0 +1,29 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+.jumbotron {
+   
+    background-color: grey;
+    text-align: center;
+}
+.profil {
+    width: 250px;
+    height: 250px;
+   border-radius: 50%;
+}
+hr {
+    width: 100%;
+    border-top: 4px solid #999;
+}
+section {
+    min-height: 600px;
+}
+.portfolio {
+    background-color: #eee;
+}
+.img-thumbnail {
+    margin: 10px;
+    width: 250px;
+    height: 100px;
+}
