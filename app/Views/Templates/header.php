@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Halaman <?php echo $judul;?></title>
     <link href="http://localhost/ci4/assets/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
