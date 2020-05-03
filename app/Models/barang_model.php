@@ -28,7 +28,7 @@ class barang_model extends Model {
     }
     public function updateBarang($data,$id)
     {  
-        return $this->db->table('barang')>update($data,array('id'=>$id));
+        return $this->db->table('barang')->update($data,array('id'=>$id));
     }
  
 }

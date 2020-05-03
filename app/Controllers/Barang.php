@@ -15,7 +15,9 @@ class Barang extends BaseController
     {
         $data = [   
                     'judul' => 'Barang',
-                    'barang' => $this->barangmodel->getBarang()
+                    'barang' => $this->barangmodel->getBarang(),
+
+                    'pager' => $this->barangmodel->pager,
         ];
         echo view('Templates/header',$data);
         echo view('Barang/index',$data);
@@ -92,11 +94,7 @@ class Barang extends BaseController
     return redirect()->to(base_url('barang/index'));
    }
 
-   public function upload()
-   {
-
-   }
-
+  
 }
 
 
