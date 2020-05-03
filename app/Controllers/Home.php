@@ -4,7 +4,8 @@ class Home extends BaseController
 {
 	public function index()
 	{
-		echo view('Templates/header');
+		$data= ['judul' => 'Home'];
+		echo view('Templates/header',$data);
 		echo view('home/index');
 		echo view('Templates/footer');
 	}

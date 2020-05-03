@@ -21,16 +21,14 @@
         <li class="nav-item">
             <a class="nav-link" href="#">About</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Pricing</a>
-        </li>
+        
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
              Barang
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <a class="dropdown-item" href="<?= base_url('Barang/index');?>">Data Barang</a>
-            <a class="dropdown-item" href="#">Another</a>
+            <a class="dropdown-item" href="<?= base_url('Barang/upload');?>">Upload Gambar</a>
             <a class="dropdown-item" href="#">Something else here</a>
             </div>
         </li>

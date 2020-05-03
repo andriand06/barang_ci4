@@ -1,24 +1,21 @@
 <div class="container mt-3">
-
-<div class="card">
-  <h5 class="card-header">Tambah Data Barang</h5>
-  
+  <div class="card">
+    <h5 class="card-header">Tambah Data Barang</h5>
   <div class="card-body">
+   <div class="alert alert-danger">
+    <?= \Config\Services::validation()->listErrors(); ?>
+    </div>
 <form action="" method="post">
   <div class="form-group">
     <label for="namabarang">Nama Barang</label>
     <input type="text" class="form-control" id="namabarang" name="namabarang" autocomplete="off">
   </div>
- 
-
-
   <div class="form-group">
     <label for="satuan">Satuan </label>
     <select class="form-control" id="satuan"name="satuan">
       <option>Ball</option>
       <option>Pak</option>
       <option>Pcs</option>
-   
     </select>
   </div>
   <div class="form-group">
@@ -30,7 +27,7 @@
     <input type="text" class="form-control" id="Harga" name="harga" autocomplete="off">
   </div>
   <input type="submit"class="btn btn-primary"value="Tambah Data">
- 
+
 </form>
 </div>
 </div>

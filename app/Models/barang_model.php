@@ -10,10 +10,9 @@ class barang_model extends Model {
     
     public function insertBarang($data)
     {
-
         return $this->db->table('barang')->insert($data);
     }
-
+  
     public function getBarangById($id)
     {
         return $this->db->table('barang')->getWhere(['id' => $id])->getResultArray();
@@ -23,6 +22,10 @@ class barang_model extends Model {
         $this->db->table('barang')->delete(['id' => $id]);
     }
 
+    public function editBarang($id) 
+    {
+        return $this->db->table('barang')->where('id',$id)->get()->getRowArray();
+    }
     public function updateBarang($data,$id)
     {  
         return $this->db->table('barang')>update($data,array('id'=>$id));
