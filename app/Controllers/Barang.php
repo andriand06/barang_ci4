@@ -8,20 +8,24 @@ class Barang extends BaseController
     public function __construct()
     {
         $this->barangmodel = new barang_model();
+        $pager = \Config\Services::pager();
+        
       
         
     }
     public function index()
     {
+        
         $data = [   
                     'judul' => 'Barang',
-                    'barang' => $this->barangmodel->getBarang(),
-
-                    'pager' => $this->barangmodel->pager,
+                    'isi' => 'barang/index',
+                    //'barang' => $this->barangmodel->getBarang(),
+                    'barang' => $this->barangmodel->paginate(5),
+                     'pager' => $this->barangmodel->pager,
         ];
-        echo view('Templates/header',$data);
-        echo view('Barang/index',$data);
-        echo view('Templates/footer');
+        
+        echo view('layout/v_wrapper',$data);
+        
     }
 
     public function tambah()
@@ -34,11 +38,14 @@ class Barang extends BaseController
 
         if(!$val)
         {
-            $data['judul'] = 'Tambah Data';
+            $data = [
+                'judul' => 'Data Barang',
+                'isi' => 'barang/tambah',
+            ];
                  
-            echo view('Templates/header',$data);
-            echo view('Barang/tambah');
-            echo view('Templates/footer');
+            
+            echo view('layout/v_wrapper',$data);
+            
         } else 
         {
             $data = [ 'id' => $this->request->getPost('id'),

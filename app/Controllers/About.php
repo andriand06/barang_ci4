@@ -3,9 +3,10 @@ class About extends BaseController
 {
     public function index()
     {  
-        $data = ['judul' => 'About'];
-         echo view('Templates/header',$data);
-        echo view('about/index');
-        echo view('Templates/footer');
+        $data = ['judul' => 'About',
+                'isi' => 'about/index'];
+         
+        echo view('layout/v_wrapper',$data);
+        
     }
 }
