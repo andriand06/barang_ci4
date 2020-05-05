@@ -8,6 +8,8 @@
 
   <div class="form-group">
       
+  <label for="id">Id</label>
+    <input type="hidden" class="form-control" id="id" name="id" autocomplete="off" value="<?= $barang['id'];?>">
     <label for="namabarang">Nama Barang</label>
     <input type="text" class="form-control" id="namabarang" name="namabarang" autocomplete="off" value="<?= $barang['namabarang'];?>">
     <small style="color:red;"><?= \Config\Services::validation()->getError('namabarang')?></small>

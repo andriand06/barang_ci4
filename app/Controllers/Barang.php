@@ -30,7 +30,7 @@ class Barang extends BaseController
                 'isi' => 'barang/index',
                 'barang' => $this->barangmodel->getBarang(),
                 //'barang' => $this->barangmodel->paginate(5),
-                // 'pager' => $this->barangmodel->pager,
+                 //'pager' => $this->barangmodel->pager,
     ];
     
     echo view('layout/v_wrapper',$data);

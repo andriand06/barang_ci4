@@ -25,7 +25,7 @@
         <div class="input-group mb-3">
           <input type="text" class="form-control" name="keyword" placeholder="Cari Nama Barang" aria-label="Recipient's username" aria-describedby="basic-addon2" autocomplete="off" autofocus >
           <div class="input-group-append">
-          <input class="btn btn-primary" type="submit" name="Cari" value="Cari"></input>
+          <input class="btn btn-primary" type="submit" name="submit" value="Cari"></input>
           </div>
         </div>
         </form>      
@@ -60,7 +60,7 @@
           
     <?php endforeach; ?>
   <?php endif; ?>
-  </tbody>
+  </tbody>  
   
 </table>
 
@@ -68,8 +68,8 @@
   </div>
     <div class="row float-right">
         <div class="col-md-12">
-              <?php //if($pager) : ?>
-                <?php// $pagi_path = 'barang/index';?>
+              <?php// if($pager) : ?>
+                <?php //$pagi_path = 'barang/index';?>
                 <?php //$pager->setPath($pagi_path); ?>
                 <?php //echo  $pager->links() ?>
               <?php //endif;?>      
