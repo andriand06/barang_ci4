@@ -10,6 +10,7 @@
       
     <label for="namabarang">Nama Barang</label>
     <input type="text" class="form-control" id="namabarang" name="namabarang" autocomplete="off" value="<?= $barang['namabarang'];?>">
+    <small style="color:red;"><?= \Config\Services::validation()->getError('namabarang')?></small>
   </div>
  
 
@@ -36,10 +37,12 @@
   <div class="form-group">
     <label for="jumlah">Jumlah</label>
     <input type="text" class="form-control" id="jumlah" name="jumlah" autocomplete="off" value="<?= $barang['jumlah'];?>">
+    <small style="color:red;"><?= \Config\Services::validation()->getError('jumlah')?></small>
   </div>
   <div class="form-group">
     <label for="Harga">Harga</label>
     <input type="text" class="form-control" id="Harga" name="harga" autocomplete="off"value="<?= $barang['harga'];?>">
+    <small style="color:red;"><?= \Config\Services::validation()->getError('harga')?></small>
   </div>
   <input type="submit"class="btn btn-primary"value="Ubah Data">
 

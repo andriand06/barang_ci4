@@ -2,13 +2,12 @@
   <div class="card">
     <h5 class="card-header">Tambah Data Barang</h5>
   <div class="card-body">
-   <div class="alert alert-danger">
-    <?= \Config\Services::validation()->listErrors(); ?>
-    </div>
+  
 <form action="" method="post">
   <div class="form-group">
     <label for="namabarang">Nama Barang</label>
     <input type="text" class="form-control" id="namabarang" name="namabarang" autocomplete="off">
+    <small style="color:red;"><?= \Config\Services::validation()->getError('namabarang');?></small>
   </div>
   <div class="form-group">
     <label for="satuan">Satuan </label>
@@ -21,10 +20,12 @@
   <div class="form-group">
     <label for="jumlah">Jumlah</label>
     <input type="text" class="form-control" id="jumlah" name="jumlah" autocomplete="off">
+    <small style="color:red;"><?= \Config\Services::validation()->getError('jumlah');?></small>
   </div>
   <div class="form-group">
     <label for="Harga">Harga</label>
     <input type="text" class="form-control" id="Harga" name="harga" autocomplete="off">
+    <small style="color:red;"><?= \Config\Services::validation()->getError('harga');?></small>
   </div>
   <input type="submit"class="btn btn-primary"value="Tambah Data">
 

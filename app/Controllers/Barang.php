@@ -15,16 +15,26 @@ class Barang extends BaseController
     }
     public function index()
     {
-        
-        $data = [   
-                    'judul' => 'Barang',
-                    'isi' => 'barang/index',
-                    //'barang' => $this->barangmodel->getBarang(),
-                    'barang' => $this->barangmodel->paginate(5),
-                     'pager' => $this->barangmodel->pager,
-        ];
-        
-        echo view('layout/v_wrapper',$data);
+        if ($this->request->getPost('keyword')) {
+            $keyword = $this->request->getPost('keyword');
+           $data = [
+               'judul' => 'Barang',
+               'isi' => 'barang/index',
+               'barang' => $this->barangmodel->getLike($keyword),
+           ];
+           echo view('layout/v_wrapper',$data);
+        } else 
+        {
+            $data = [   
+                'judul' => 'Barang',
+                'isi' => 'barang/index',
+                'barang' => $this->barangmodel->getBarang(),
+                //'barang' => $this->barangmodel->paginate(5),
+                // 'pager' => $this->barangmodel->pager,
+    ];
+    
+    echo view('layout/v_wrapper',$data);
+        }
         
     }
 
@@ -36,7 +46,7 @@ class Barang extends BaseController
                                 'jumlah' => 'required|numeric',
                                 'harga' => 'required|numeric']);
 
-        if(!$val)
+        if($val == false)
         {
             $data = [
                 'judul' => 'Data Barang',
@@ -63,11 +73,12 @@ class Barang extends BaseController
     {
         $data = [
             'judul' => 'Detail Barang',
+            'isi' => 'barang/detail',
             'barang' => $this->barangmodel->getBarangById($id),
         ];
-        echo view('Templates/header',$data);
-        echo view('Barang/detail',$data);
-        echo view('Templates/footer');
+       
+        echo view('layout/v_wrapper',$data);
+        
     }
     public function hapus($id)
     {
@@ -80,25 +91,44 @@ class Barang extends BaseController
     {
         $data = [
             'judul' => 'Edit Data Barang',
+            'isi' => 'barang/edit',
             'barang' => $this->barangmodel->editBarang($id),
         ];
-        echo view('Templates/header',$data);
-        echo view('Barang/edit',$data);
-        echo view('Templates/footer');
+        
+        echo view('layout/v_wrapper',$data);
+       
 
         
     }
    public function update($id)
    {
-    $data = [ 'id' => $this->request->getPost('id'),
-    'namabarang' => $this->request->getPost('namabarang'),
-   'jumlah' => $this->request->getPost('jumlah'),
-   'satuan' => $this->request->getPost('satuan'),
-   'harga' => $this->request->getPost('harga'),];
+    helper(['form','url']);
+    $val = $this->validate (['namabarang' => 'required',
+                            'satuan' => 'required',
+                            'jumlah' => 'required|numeric',
+                            'harga' => 'required|numeric']);
+
+    if($val == false) {
+        $data = [
+            'judul' => 'Edit Data Barang',
+            'isi' => 'barang/edit',
+            'barang' => $this->barangmodel->editBarang($id),
+        ];
+        
+        echo view('layout/v_wrapper',$data);
+       
+    } else {
+        $data = [ 'id' => $this->request->getPost('id'),
+        'namabarang' => $this->request->getPost('namabarang'),
+       'jumlah' => $this->request->getPost('jumlah'),
+       'satuan' => $this->request->getPost('satuan'),
+       'harga' => $this->request->getPost('harga'),];
+        
+        $this->barangmodel->updateBarang($data,$id);
+        session()->setFlashdata('success','Data Berhasil Diubah!');
+        return redirect()->to(base_url('barang/index'));
+    }
     
-    $this->barangmodel->updateBarang($data,$id);
-    session()->setFlashdata('success','Data Berhasil Diubah!');
-    return redirect()->to(base_url('barang/index'));
    }
 
   

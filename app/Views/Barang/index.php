@@ -8,6 +8,7 @@
     </div>
   </div>
 </div>
+
 <?php if(session()->getFlashdata('success')): ?>
   <div class="container">
   <div class="alert alert-success mt-3">
@@ -22,14 +23,19 @@
     <div class="col-md-4">
       <form action="<?= base_url('barang');?>" method="post">
         <div class="input-group mb-3">
-          <input type="text" class="form-control" name="keyword"placeholder="Cari Nama Barang" aria-label="Recipient's username" aria-describedby="basic-addon2" autocomplete="off" autofocus >
+          <input type="text" class="form-control" name="keyword" placeholder="Cari Nama Barang" aria-label="Recipient's username" aria-describedby="basic-addon2" autocomplete="off" autofocus >
           <div class="input-group-append">
-          <button class="btn btn-primary" type="submit" name="submit">Cari</button>
+          <input class="btn btn-primary" type="submit" name="Cari" value="Cari"></input>
           </div>
         </div>
-      </form>  
-    </div>
-  </div>
+        </form>      
+</div>
+</div>
+</div>
+<?php if(empty($barang)) : ?>
+  <p style="color:red;" class="container mr-3">Maaf,Data tidak ditemukan.</p>
+<?php endif;?>
+    
   <div class="row">
 <table class="table table-hover">
   <thead>
@@ -57,16 +63,16 @@
   </tbody>
   
 </table>
-     
-</div>
-</div>
+
+  
+  </div>
     <div class="row float-right">
         <div class="col-md-12">
-              <?php if($pager) : ?>
-                <?php $pagi_path = 'barang/index';?>
-                <?php $pager->setPath($pagi_path); ?>
-                <?=  $pager->links() ?>
-              <?php endif;?>      
+              <?php //if($pager) : ?>
+                <?php// $pagi_path = 'barang/index';?>
+                <?php //$pager->setPath($pagi_path); ?>
+                <?php //echo  $pager->links() ?>
+              <?php //endif;?>      
         </div>
     </div>    
 </div>
