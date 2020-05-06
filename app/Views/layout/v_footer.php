@@ -4,15 +4,15 @@
     </div>
     <!-- /.content-header -->
  <!-- Main Footer -->
- <footer class="main-footer">
+ <footer class="main-footer mt-5">
     <!-- To the right -->
-    <div class="float-right d-none d-sm-inline">
-      Anything you want
+    <div class="d-none d-sm-inline mr-3">
+      Inovating through Design
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; 2020 <a href="https://andriand06.github.io">Andrian Davinta</a>.</strong> All rights reserved.
   </footer>
-</div>
+
 <!-- ./wrapper -->
 
 <!-- REQUIRED SCRIPTS -->
@@ -24,8 +24,10 @@
 <!-- AdminLTE App -->
 <script src="<?= base_url();?>/templateadmin/dist/js/adminlte.min.js"></script>
 <script src="http://localhost/ci4/assets/js/bootstrap.min.js"></script>
-<script src="http://localhost/ci4/assets/js/jquery-3.2.1.slim.min.js')"></script>
+<script src="http://localhost/ci4/assets/js/jquery-3.2.1.slim.min.js"></script>
 <script src="http://localhost/ci4/assets/js/popper.min.js"></script>
+<script src="http://localhost/ci4/assets/js/script.js"></script>
+<script src="http://localhost/ci4/assets/js/sweetalert2.all.min.js "></script>
 <script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

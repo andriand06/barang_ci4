@@ -10,9 +10,9 @@
 </div>
 
 <?php if(session()->getFlashdata('success')): ?>
-  <div class="container">
-  <div class="alert alert-success mt-3">
-    <?= session()->getFlashdata('success'); ?>
+  <div class="container mt-3">
+  <div class="alert alert-success" data-flashdata = "<?= session()->getFlashdata('success');?>">
+    <?php echo session()->getFlashdata('success'); ?>
   </div>
   </div>
 <?php  endif;  ?>

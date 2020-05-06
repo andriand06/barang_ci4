@@ -27,7 +27,7 @@
     <input type="text" class="form-control" id="Harga" name="harga" autocomplete="off">
     <small style="color:red;"><?= \Config\Services::validation()->getError('harga');?></small>
   </div>
-  <input type="submit"class="btn btn-primary"value="Tambah Data">
+<input type="submit"class="btn btn-primary"value="Tambah Data" onclick="Swal.fire({title :'Tambah Data',text:'Data berhasil ditambahkan',icon:'success'})">
 
 </form>
 </div>

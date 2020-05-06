@@ -10,3 +10,8 @@
     transition: 0.3s ease;
     padding: 5px;
 }
+
+.container.mt-5 {
+    width: 600px;
+    align-content: center;
+}
