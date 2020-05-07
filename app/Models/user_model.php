@@ -12,9 +12,9 @@ class user_model extends Model {
         return $this->db->table('user')->insert($data);
     }
   
-    public function getUserByID($id)
+    public function getWhere($username)
     {
-        return $this->db->table('user')->getWhere(['id' => $id])->getResultArray();
+        return $this->db->table('user')->getWhere(['username' => $username])->getRowArray();
     }
     public function deleteUser($id)
     {   
@@ -35,6 +35,31 @@ class user_model extends Model {
      return $this->db->table('user')->like('namabarang',$keyword)->orLike('jumlah',$keyword)->orLike('harga',$keyword)->get()->getResultArray();
      
         
+    }
+    public function login()
+    {
+        $username = $this->request->getPost('username');
+            $password = $this->request->getPost('password');
+            $user = $this->db->table('user')->getWhere(['username' => $username])->getRowArray();
+            if ($user)
+            {
+                if ($user['is_active'] == 1){
+                    if(password_verify($password,$user['password'])){
+                        $data = [
+                            'username' => $user['username'],
+                            'role_id' => $user['role_id']
+                        ];
+                        session()->set($data);
+                        if($user['role_id'] == 1){
+                            echo "abc";
+                           //return redirect()->to(base_url('Home'));
+                        } else
+                        {
+                            return redirect()->to(base_url('User'));
+                        }
+                    }
+                }
+            }
     }
  
 }

@@ -1,6 +1,6 @@
 <?php 
 
-if ($isi == 'Login/index' OR $isi == 'Registration/index')
+if ($isi == 'Auth/index' OR $isi == 'Auth/registration')
 {
     echo view('layout/v_head.php');
     echo view('layout/v_content.php');

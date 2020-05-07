@@ -42,5 +42,13 @@ class BaseController extends Controller
 		// E.g.:
 		// $this->session = \Config\Services::session();
 	}
+	public function cek_status ()
+	{
+	if(session()->getTempdata('username') == NULL || session()->getTempdata('role_id') == '0'){
+	session()->setFlashdata('error','Silahkan login terlebih dahulu untuk mengakses halaman ini');
+	 return redirect()->to(base_url('Auth'));
+	}
+	}
+
 
 }

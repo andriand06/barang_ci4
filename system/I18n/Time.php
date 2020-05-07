@@ -68,7 +68,7 @@ class Time extends DateTime
 	/**
 	 * @var string
 	 */
-	protected $locale;
+	protected $locale = 'Asia/Jakarta';
 
 	/**
 	 * Format to use when displaying datetime through __toString

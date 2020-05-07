@@ -52,7 +52,7 @@
     <tr>
       <th scope="row"><?php echo $i++;?></th>
       <td><a href="<?= base_url('Barang/detail');?><?= '/'. $brg['id'];?>" class="badge badge-primary float-right mr-3">Detail</a>
-      <a href="<?= base_url('Barang/hapus');?><?= '/'. $brg['id'];?>" class="badge badge-danger float-right mr-2" onclick="return confirm('Yakin ingin menghapus Data?');">Hapus</a>
+      <a href="<?= base_url('Barang/hapus');?><?= '/'. $brg['id'];?>" class="badge badge-danger float-right mr-2" id="hapus" onclick="return confirm('Yakin ingin menghapus Data?');">Hapus</a>
       <a href="<?= base_url('Barang/edit');?><?= '/'. $brg['id'];?>" class="badge badge-warning float-right mr-2">Edit</a>
       <?=$brg['namabarang'];?></td>
       
@@ -76,3 +76,16 @@
         </div>
     </div>    
 </div>
+<?php if(session()->getTempdata('role_id') == '2') : ?>
+<script>
+var hapus = document.querySelectorAll('.badge.badge-danger.float-right.mr-2')
+hapus.forEach(function(e){
+  e.parentNode.removeChild(e);
+});
+var edit = document.querySelectorAll('.badge.badge-warning.float-right.mr-2')
+edit.forEach(function(e){
+  e.parentNode.removeChild(e);
+});
+
+</script>
+<?php endif; ?>

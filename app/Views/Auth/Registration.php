@@ -2,7 +2,7 @@
     <div class="kotak">
             <center><h1>CREATE ACCOUNT FOR FREE!</h1></center>
             <center><p><label for="">Already have an account?</label>
-              <a href="<?=base_url('login/index');?>">Login here.</a></p></center>
+              <a href="<?=base_url('Auth/index');?>">Login here.</a></p></center>
               <form action="" method="post">
                 <div class="form-group"> 
                   <input type="text" class="form-control" id="username" name="username" placeholder="Username" autocomplete="off" value="<?= $username;?>">
