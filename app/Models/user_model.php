@@ -25,9 +25,9 @@ class user_model extends Model {
     {
         return $this->db->table('user')->where('id',$id)->get()->getRowArray();
     }
-    public function updateUser($data,$id)
+    public function updateUser($data,$username)
     {  
-        return $this->db->table('user')->update($data,array('id'=>$id));
+        return $this->db->table('user')->update($data,array('username'=>$username));
     }
     public function getLike($keyword)
     {
@@ -36,6 +36,7 @@ class user_model extends Model {
      
         
     }
+
     public function login()
     {
         $username = $this->request->getPost('username');

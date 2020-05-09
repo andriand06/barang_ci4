@@ -25,57 +25,58 @@
         </div>
       </div>
 
+      <!-- Query Menu -->
+      <?php
+      $db = \Config\Database::connect();
+      $roleid = session()->getTempdata('role_id');
+          $queryMenu = "SELECT `user_menu`.`id`,`menu`
+          FROM `user_menu` JOIN `user_access_menu`
+            ON `user_menu`.`id` = `user_access_menu`.`menuid`
+        WHERE `user_access_menu`.`roleid` = $roleid
+        ORDER BY `user_access_menu`.`menuid` ASC";
+        $menu = $db->query($queryMenu)->getResultArray();
+       
+
+      ?>
+     
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item has-treeview menu-close">
+               <?php foreach ($menu as $m) :?>  
+               <li class="nav-item has-treeview menu-close">
+               
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-th"></i>
               <p>
-                Home
+                 <?= $m['menu']; ?>
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
+                        <?php
+
+            $menuId = $m['id'];
+            $querySubMenu = "SELECT *
+            FROM `user_sub_menu` JOIN `user_menu` 
+              ON `user_sub_menu`.`menuid` = `user_menu`.`id`
+            WHERE `user_sub_menu`.`menuid` = $menuId";
+            $submenu = $db->query($querySubMenu)->getResultArray();
+            ?>
+            <?php foreach ($submenu as $sub) :?>
+              <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link active">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Active Page</p>
+                <a href="<?= base_url($sub['url']);?>" class="nav-link active">
+                  <i class="<?= $sub['icon'];?>"></i>
+                  <p><?= $sub['title'];?></p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Inactive Page</p>
-                </a>
-              </li>
+              
             </ul>
+            <?php endforeach;?>
           </li>
-          <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                Barang
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="<?= base_url('Barang/index');?>" class="nav-link active">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Data Barang</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="<?= base_url('Barang/upload');?>" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Upload Gambar</p>
-                </a>
-              </li>
-            </ul>
-          </li>
+               <?php endforeach;?>
+ 
           <li class="nav-item">
             <a href="<?= base_url('Auth/logout');?>" class="nav-link">
               <i class="nav-icon fas fa-sign-out-alt"></i>
@@ -120,3 +121,13 @@
     </div>
   </aside>
   <!-- /.control-sidebar -->
+  <?php if(session()->getTempdata('role_id') == '2') : ?>
+    <script>
+      var $admin = document.getElementById('listadmin')
+
+      $admin.parentNode.removeChild($admin);
+
+
+
+  </script>
+  <?php endif; ?>

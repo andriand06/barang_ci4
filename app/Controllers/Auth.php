@@ -41,25 +41,31 @@ class Auth extends BaseController {
             {
                 if ($user['is_active'] == '1'){
                     if(password_verify($password,$user['password'])){
-                        $data = [
-                            'username' => $user['username'],
-                            'role_id' => $user['role_id']
-                        ];
-                        session()->setTempdata($data);
-                        if($user['role_id'] == '1'){
+                       
+                            $data = [
+                                'username' => $user['username'],
+                                'role_id' => $user['role_id']
+                            ];
+                            session()->setTempdata($data);                        
+                        }
+                            else {
+                                session()->setFlashdata('error','Maaf Username atau password salah');
+                                return redirect()->to(base_url('Auth'));
+                            }
+                    
+                        if($user['role_id'] == '1' || $user['role_id'] == '2'){
                             
                            return redirect()->to(base_url('Home'));
-                        } else
-                        {
-                            return redirect()->to(base_url('Home'));
-                        }
+                        } 
+                     
+                        
                     }
                 }
             }
             
         }
 
-    }
+    
     
    
     public function Registration()
@@ -117,6 +123,6 @@ class Auth extends BaseController {
         session()->removeTempdata('username');
         session()->removeTempdata('role_id');
         session()->setFlashdata('success','Anda Berhasil Logout!');
-       return redirect()->to(base_url('Auth/index'));
+        return redirect()->to(base_url('Auth/index'));
     }
 }

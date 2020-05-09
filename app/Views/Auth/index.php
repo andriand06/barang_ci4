@@ -15,8 +15,7 @@
             
             </div>
             <?php endif; ?>
-          </div>
-          
+          </div>     
       </div>
       <div class="row">
         <div class="col-md-8">
@@ -28,16 +27,16 @@
           <?php  endif;  ?>
         </div>
       </div>
-
+    
   <form class="px-4 py-3" method="post" action="">
     <div class="form-group">
-      <label for="username">Username</label>
-      <input type="text" class="form-control" id="username" name="username" placeholder="Minimal 8 Karakter" autocomplete="off"value="<?php set_value('username');?>">
+      
+      <input type="text" class="form-control" name="username" placeholder="Username" autocomplete="off"value="<?php set_value('username');?>">
       <small style="color:red;"><?= \Config\Services::validation()->getError('username');?></small>
     </div>
     <div class="form-group">
-      <label for="password">Password</label>
-      <input type="password" class="form-control" id="password" name="password"placeholder="Minimal 8 Karakter">
+      
+      <input type="password" class="form-control" id="password" name="password"placeholder="Password">
       <small style="color:red;"><?= \Config\Services::validation()->getError('password');?></small>
     </div>
     <div class="form-group">
@@ -51,6 +50,7 @@
     <input type="submit" class="btn btn-primary" value="Sign In">
   </form>
   <div class="dropdown-divider"></div>
-  <a class="dropdown-item" href="<?= base_url('Auth/registration');?>">New around here? Sign up</a>
-  <a class="dropdown-item" href="<?= base_url('Forgot');?>">Forgot password?</a>
+  <p><label >New around here? </label><a href="<?= base_url('Auth/registration');?>">Sign up</a></p>
+  <p><label >Forgot your password? </label><a href="<?= base_url('Auth/forgot');?>">Click here</a></p>
+  
 </div>
