@@ -217,6 +217,107 @@ class Admin extends BaseController{
         session()->setFlashdata('success','Data berhasil diubah!');
         return redirect()->to(base_url('admin/submenu'));
     }
+    public function role()
+    {
+        $val = $this->validate(['role' => 'required']);
+        if ($val == false)
+        {
+            $data = ['judul' => 'Role',
+                    'isi' => 'admin/role',
+                    'user' => session()->getTempdata('username'),
+                    'role_id' => session()->getTempdata('role_id'),
+                    'role' => $this->db->table('roleid')->get()->getResultArray()
+                ];
+                echo view('layout/v_wrapper',$data);
+
+        } else {
+            $data = ['judul' => 'Role',
+            'isi' => 'admin/role',
+            'user' => session()->getTempdata('username'),
+            'role_id' => session()->getTempdata('role_id'),
+            'role' => $this->db->table('roleid')->get()->getResultArray()
+        ];
+        echo view('layout/v_wrapper',$data);
+        }
+    }
+    public function deleterole($id)
+    {
+        $this->db->table('roleid')->delete(['id' => $id]);
+        session()->setFlashdata('success','Data berhasil dihapus!');
+        return redirect()->to(base_url('admin/role'));
+    }
+    public function editrole($id)
+    {
+        $val =$this->validate(['role' => 'required',
+                                ]);
+        if($val == false)
+        {
+            $data = [
+                'judul' => 'Edit Role',
+                'isi' => 'Admin/editrole',
+                'user' => session()->getTempdata('username'),
+                'role_id' => session()->getTempdata('role_id'),
+                'role' => $this->db->table('roleid')->where('id',$id)->get()->getRowArray()
+            ];
+            
+            echo view('layout/v_wrapper',$data);
+        }
+        else {
+            $data = [
+                'judul' => 'Edit Role',
+                'isi' => 'Admin/editrole',
+                'user' => session()->getTempdata('username'),
+                'role_id' => session()->getTempdata('role_id'),
+                'role' => $this->db->table('roleid')->where('id',$id)->get()->getRowArray()
+            ];
+            
+            echo view('layout/v_wrapper',$data);
+        }
+    }
+    public function updaterole($id)
+    {
+        
+        $data = ['role' => $this->request->getPost('role'),
+               ];
+        $this->db->table('roleid')->update($data,array('id'=>$id));
+        session()->setFlashdata('success','Data berhasil diubah!');
+        return redirect()->to(base_url('admin/role'));
+    }
+    public function addRole()
+    {
+        $val = $this->validate(['role' => 'required']);
+        if ($val == false)
+        {
+        $data = [
+            'judul' => 'Add New Role',
+            'isi' => 'Admin/addrole',
+            'user' => session()->getTempdata('username'),
+            'role_id' => session()->getTempdata('role_id'),
+            'role' => $this->db->table('roleid')->get()->getResultArray()
+        ];
+        echo view('layout/v_wrapper',$data);
+        }else {
+        $data = [
+            
+            'role' => $this->request->getPost('role')
+            
+        ];
+        $this->db->table('roleid')->insert($data);
+        $data1 = [
+            'judul' => 'Add New Role ',
+            'isi' => 'Admin/role',
+            'user' => session()->getTempdata('username'),
+            'role_id' => session()->getTempdata('role_id'),
+            'role' => $this->db->table('roleid')->get()->getResultArray()
+        ];
+        
+        echo view('layout/v_wrapper',$data1);
+        session()->setFlashdata('success','Data berhasil ditambahkan!');
+        return redirect()->to(base_url('admin/role'));
+        }
+        
+    }
+   
 
     
 }
